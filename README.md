@@ -1,6 +1,6 @@
 # vue-v-contextmenu
 
-[![npm](https://raster.shields.io/badge/npm-vue--v--contextmenu-brightgreen.svg)](https://www.npmjs.com/package/vue-v-contextmenu)
+[![npm](https://img.shields.io/badge/npm-vue--v--contextmenu-brightgreen.svg)](https://www.npmjs.com/package/vue-v-contextmenu)
 
 > contextmenu vue directive and component based on Vue 2.0
 
@@ -20,13 +20,13 @@
 
 ```html
 <!-- 固定菜单 -->
-<div class="my-trigger an-pane primary" v-contextmenu.trigger>
+<div v-contextmenu.trigger>
   右键此方块（简单固定菜单）
 </div>
-<div class="my-menu an-pane" v-contextmenu.disableHideOnClick>
-  <div class="item">固定菜单项-1</div>
-  <div class="item">固定菜单项-2</div>
-  <div class="item">固定菜单项-3</div>
+<div v-contextmenu.disableHideOnClick>
+  <div>固定菜单项-1</div>
+  <div>固定菜单项-2</div>
+  <div>固定菜单项-3</div>
 </div>
 ```
 
@@ -50,7 +50,6 @@
 <template>
   <!-- 动态菜单，采用组件 -->
   <div
-    class="my-trigger an-pane success"
     v-contextmenu:FOO.trigger="item.menu"
     v-for="(item, index) in list"
     :key="index"
@@ -89,7 +88,6 @@
 <template>
   <div
     v-contextmenu:FOO.menu="setData"
-    class="my-menu an-pane"
     @click="$el.hide()"
   >
     <div v-for="(item, index) in data" :key="index" class="item">{{item}}</div>
@@ -120,11 +118,11 @@
 
 ```html
 <!-- 左键点击 -->
-<div class="my-trigger an-pane error" v-contextmenu:bar.trigger.click>
+<div v-contextmenu:bar.trigger.click>
   左键点击此方块
 </div>
-<div class="my-menu an-pane" v-contextmenu:bar.click>
-  <div class="item">固定菜单项-1</div>
+<div v-contextmenu:bar.click>
+  <div>固定菜单项-1</div>
 </div>
 ```
 
