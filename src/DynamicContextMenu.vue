@@ -1,5 +1,5 @@
 <template>
-  <div v-contextmenu:FOO.menu="setData" class="my-menu an-pane">
+  <div v-contextmenu:FOO="setData" class="my-menu an-pane" @click="$el.hide()">
     <div v-for="(item, index) in data" :key="index" class="item">{{item}}</div>
   </div>
 </template>

@@ -1,5 +1,10 @@
-import VContextmenu from './directives/v-contextmenu'
+import directive from './directives/v-contextmenu'
+import component from './components/Contextmenu'
 
-VContextmenu.install = Vue => Vue.directive('contextmenu', VContextmenu)
+directive.install = Vue => {
+  Vue.directive('contextmenu', directive)
+  Vue.component('Contextmenu', component)
+}
 
-export default VContextmenu
+export default directive
+export const Contextmenu = component

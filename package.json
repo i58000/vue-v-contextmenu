@@ -1,7 +1,7 @@
 {
   "name": "vue-v-contextmenu",
   "description": "AN Vue directive of contextmenu",
-  "version": "1.0.5",
+  "version": "2.0.0",
   "author": "AN JINSHUO",
   "license": "MIT",
   "main": "dist/vue-v-contextmenu.js",
@@ -36,10 +36,10 @@
   "keywords": [
     "vue",
     "directive",
-	"contextmenu",
-	"v-contextmenu",
-	"rightclick",
-	"component"
+    "contextmenu",
+    "v-contextmenu",
+    "rightclick",
+    "component"
   ],
   "repository": {
     "type": "git",

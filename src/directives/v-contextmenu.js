@@ -15,21 +15,35 @@ function _menuInserted(el, binding, vnode) {
   const hide = () => {
     dom.style.display = 'none'
   }
-
+  // 挂载hide方法在dom上
   dom.hide = hide
   // 初始化隐藏;
   hide()
   /**
    * 添加监听
    */
-  dom.addEventListener('blur', hide)
-  document.addEventListener('scroll', hide)
+  if (!binding.modifiers.disableHideOnClick && !binding.modifiers.dhClick) {
+    dom.addEventListener('click', hide)
+  }
+  if (!binding.modifiers.disableHideOnBlur && !binding.modifiers.dhBlur) {
+    dom.addEventListener('blur', hide)
+  }
+  if (!binding.modifiers.disableHideOnScroll && !binding.modifiers.dhScroll) {
+    document.addEventListener('scroll', hide)
+  }
   /**
    * 移除监听
    */
   binding.unbind = () => {
-    dom.removeEventListener('blur', hide)
-    document.removeEventListener('scroll', hide)
+    if (!binding.modifiers.disableHideOnClick && !binding.modifiers.dhClick) {
+      dom.removeEventListener('click', hide)
+    }
+    if (!binding.modifiers.disableHideOnBlur && !binding.modifiers.dhBlur) {
+      dom.removeEventListener('blur', hide)
+    }
+    if (!binding.modifiers.disableHideOnScroll && !binding.modifiers.dhScroll) {
+      document.removeEventListener('scroll', hide)
+    }
   }
 }
 function _targetInserted(el, binding, vnode) {
@@ -96,10 +110,10 @@ function _targetInserted(el, binding, vnode) {
 
 export default {
   inserted(el, binding, vnode) {
-    if (binding.modifiers.menu) {
-      _menuInserted(el, binding, vnode)
-    } else if (binding.modifiers.target) {
+    if (binding.modifiers.trigger) {
       _targetInserted(el, binding, vnode)
+    } else {
+      _menuInserted(el, binding, vnode)
     }
   },
   unbind(el, binding, vnode) {
