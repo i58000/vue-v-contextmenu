@@ -86,10 +86,7 @@
 
 <!-- DynamicContextMenu.vue -->
 <template>
-  <div
-    v-contextmenu:FOO.menu="setData"
-    @click="$el.hide()"
-  >
+  <div v-contextmenu:FOO.menu="setData" @click="$el.hide()">
     <div v-for="(item, index) in data" :key="index" class="item">{{item}}</div>
   </div>
 </template>
@@ -128,12 +125,26 @@
 
 #### 全局引用
 
+默认同时引入指令和内置菜单组件：
+
 ```js
 import VContextmenu from 'vue-v-contextmenu'
 Vue.use(VContextmenu)
 ```
 
-#### 组件内引用
+若无需内置组件，以以下方式引用：
+
+```js
+Vue.use(VContextmenu, { component: false })
+```
+
+默认内置组件名为 `Contextmenu`，可自定义组件名：
+
+```js
+Vue.use(VContextmenu, { component: 'AnohterContextmenu' })
+```
+
+#### 组件内按需引用
 
 ```js
 import VContextmenu from 'vue-v-contextmenu'
